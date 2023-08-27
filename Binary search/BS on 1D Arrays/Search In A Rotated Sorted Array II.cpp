@@ -11,16 +11,16 @@ bool searchInARotatedSortedArrayII(vector<int>&a, int k) {
            low = low+1;
            high = high-1;
        }
-       else if(a[0]<=a[mid])
+       else if(a[low]<=a[mid])
        {
-           if(a[0]<= k && k<= a[mid])
+           if(a[low]<= k && k<= a[mid])
            high = mid-1;
            else
            low = mid+1;
        }
        else
          {
-             if(a[mid]<= k && k<=a[n-1])
+             if(a[mid]<= k && k<=a[high])
              low = mid +1;
              else
              high = mid -1;
