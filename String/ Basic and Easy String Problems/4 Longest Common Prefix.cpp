@@ -11,7 +11,7 @@ string commonPrefix(vector<string>& arr,int n){
 		int siz = min(a,b);
 		for(int j = 0;j<siz;j++)
 		{
-			if(s[j]==cur[j])
+			if(s[j]==cur[j]) // or if(s[j]==cur[j])
 			temp+=s[j];
 			else
 			break;
