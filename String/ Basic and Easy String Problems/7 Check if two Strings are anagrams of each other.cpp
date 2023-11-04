@@ -14,7 +14,7 @@ bool isAnagram(string str1, string str2)
        // ---------- method 2 ----------------
     else
     {
-        map<char,int>mpp;
+        unordered_map<char,int>mpp;
 
         for(int i =0;i<str1.size();i++)
         {
