@@ -13,4 +13,5 @@ vector<int> printNos(int x) {
   vector<int> v;
   createarray(v,x);
   return v;
+   
 }
