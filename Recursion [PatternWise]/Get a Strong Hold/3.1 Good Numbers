@@ -1,0 +1,32 @@
+bool solve(int nmbr,int lftsm,int d)
+{   if(nmbr == 0)
+	return true;
+	
+   if(nmbr == d)
+   return false;
+   else if(nmbr%10 <= lftsm || nmbr%10 == d) return false;
+   else{
+	   lftsm += (nmbr%10);
+	   solve(nmbr/10,lftsm,d);
+   }
+   
+}
+
+
+
+
+
+
+vector<int> goodNumbers(int a, int b, int digit) {
+	vector<int>v;
+	for(int i= a;i<=b;i++)
+	{   bool check = false;
+		if(i<10 && i != digit)
+		v.push_back(i);
+		else if(i%10 != digit)
+		check = solve(i/10,i%10,digit);
+		if(check == true)
+		v.push_back(i);
+	}
+	return v;
+}
