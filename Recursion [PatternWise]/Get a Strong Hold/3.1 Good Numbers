@@ -21,9 +21,7 @@ vector<int> goodNumbers(int a, int b, int digit) {
 	vector<int>v;
 	for(int i= a;i<=b;i++)
 	{   bool check = false;
-		if(i<10 && i != digit)
-		v.push_back(i);
-		else if(i%10 != digit)
+		if(i%10 != digit)
 		check = solve(i/10,i%10,digit);
 		if(check == true)
 		v.push_back(i);
