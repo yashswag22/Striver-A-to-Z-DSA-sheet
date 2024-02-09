@@ -1,0 +1,22 @@
+void solve(vector<string> &v, string s,int l,int r,int n)
+{
+    if (s.size()==2*n){
+        v.push_back(s);
+        return;
+    }  
+    // terminate bcz it's not a correct sequence
+    if(r>l) return;
+    // add left part 
+    if(l<n)
+    solve(v,s+"(",l+1,r,n);
+    // add right part 
+    solve(v,s+")",l,r+1,n);
+
+}
+
+
+vector<string> validParenthesis(int n){
+    vector<string>v;
+    solve(v,"(",1,0,n);
+    return v;
+}
