@@ -1,0 +1,96 @@
+#include <bits/stdc++.h> 
+/*************************************************************
+
+    Following is the Binary Tree node structure
+
+    class BinaryTreeNode
+    {
+    public :
+        T data;
+        BinaryTreeNode<T> *left;
+        BinaryTreeNode<T> *right;
+
+        BinaryTreeNode(T data) {
+            this -> data = data;
+            left = NULL;
+            right = NULL;
+        }
+    };
+
+*************************************************************/
+vector<int> solution(BinaryTreeNode<int>*root)
+{
+    vector<int>ans;
+    bool LtoR = false;
+    stack <BinaryTreeNode<int>*>s1;
+    stack <BinaryTreeNode<int>*>s2;
+
+   // s2.push(root);
+    ans.push_back(root->data);
+    if(root->right != NULL){
+    s1.push(root->right);
+    ans.push_back(root->right->data);
+    }
+     if(root->left != NULL){
+    s1.push(root->left);
+    ans.push_back(root->left->data);
+     }
+
+    while(!s1.empty() || !s2.empty())
+    {
+        if(LtoR == false)
+        {
+            while(!s2.empty()){
+            BinaryTreeNode<int> * temp = s2.top();
+            s2.pop();
+            if(temp!=NULL){
+           // ans.push_back(temp->data);
+            if(temp->right != nullptr) {
+                    ans.push_back(temp->right->data);
+                    s1.push(temp->right);
+                }
+                if(temp->left!=nullptr) {
+                    ans.push_back(temp->left->data);
+                    s1.push(temp->left);
+                }
+            }
+            }
+            LtoR = true;
+        }
+        else{
+            while(!s1.empty()){
+            BinaryTreeNode<int>*temp = s1.top();
+            s1.pop();
+            if(temp!=NULL){
+           // ans.push_back(temp->data);
+            if(temp->left!=nullptr) {
+                    ans.push_back(temp->left->data);
+                    s2.push(temp->left);
+                }
+                if(temp->right != nullptr) {
+                    ans.push_back(temp->right->data);
+                    s2.push(temp->right);
+                }
+            
+            }
+            }
+            LtoR = false;
+        }
+    }
+
+    return ans;
+}
+vector<int> zigZagTraversal(BinaryTreeNode<int> *root)
+{
+     vector<int>ans;
+    if(root == NULL) return ans;
+    if(root->left == nullptr && root->right == nullptr) {
+        ans.push_back(root->data);
+        return ans;
+    }
+
+    ans =  solution(root);
+   
+    return ans;
+    // Write your code here!
+}
