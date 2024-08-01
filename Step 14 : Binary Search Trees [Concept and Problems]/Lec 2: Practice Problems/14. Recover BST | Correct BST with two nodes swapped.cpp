@@ -63,8 +63,8 @@ public:
             prev = curr;
              curr = next();
         }
-
-        swap(first->val,second->val);
+        if(first && second)
+            swap(first->val,second->val);
         
     }
 };
